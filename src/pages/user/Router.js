@@ -25,6 +25,7 @@ function UserRouter() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/tours/:id/book" element={<BookTicket />} />
+        <Route path="/shows/:id/book" element={<BookTicket />} />
         <Route path="/tickets" element={<ViewTickets />} />
       </Routes>
     </>

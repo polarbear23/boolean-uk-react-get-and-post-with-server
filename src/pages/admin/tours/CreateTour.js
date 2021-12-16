@@ -1,20 +1,36 @@
-import { useState } from "react"
-
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router"
 function CreateTourPage(props) {
   const { tours, setTours } = props
-
+  const [submitted, setSubmitted] = useState(false);
   const [tourToCreate, setTourToCreate] = useState({
     name: "",
     price: 0,
+    address: "",
   })
-
+  let navigate = useNavigate();
   console.log({ tourToCreate })
 
   function handleSubmit(event) {
-    event.preventDefault()
-
+    event.preventDefault();
+    setSubmitted(true);
     // Redirect to "/" with navigate and useNavigate
   }
+
+  useEffect(() => {
+    if (submitted) {
+      fetch("http://localhost:3030/tours", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(tourToCreate)
+      })
+        .then(resp => resp.json())
+        .then((data) => {
+          setTours([...tours, tourToCreate]);
+          navigate("/");
+        });
+    }
+  }, [submitted]);
 
   function handleChange(event) {
     const name = event.target.name
@@ -41,6 +57,14 @@ function CreateTourPage(props) {
         name="price"
         onChange={handleChange}
         value={tourToCreate.price}
+      />
+      <label htmlFor="address">address</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        onChange={handleChange}
+        value={tourToCreate.address}
       />
       <button type="submit">Create Tour</button>
     </form>

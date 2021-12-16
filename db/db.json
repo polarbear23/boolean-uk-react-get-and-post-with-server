@@ -3,22 +3,44 @@
     {
       "id": 1,
       "name": "Madame Tussauds",
-      "price": 8.5
+      "price": 8.5,
+      "address": "10 books rd"
     },
     {
       "id": 2,
       "name": "Natural History Museum",
-      "price": 14
+      "price": 14,
+      "address": "10 books rd"
     },
     {
       "id": 3,
       "name": "City of London",
-      "price": 24
+      "price": 24,
+      "address": "10 books rd"
     },
     {
       "price": "11.50",
       "name": "Big Ben",
-      "id": 4
+      "id": 4,
+      "address": "10 books rd"
+    },
+    {
+      "name": "bob",
+      "price": "2",
+      "id": 5,
+      "address": "10 books rd"
+    },
+    {
+      "name": "bobby",
+      "price": 0,
+      "id": 6,
+      "address": "10 books rd"
+    },
+    {
+      "name": "",
+      "price": 0,
+      "address": "",
+      "id": 7
     }
   ],
   "tickets": [
@@ -35,6 +57,27 @@
       "email": "rico@mail.com",
       "quantity": 1,
       "date": "2021-12-14T12:34:47.514Z"
+    },
+    {
+      "email": "",
+      "quantity": 0,
+      "date": "",
+      "tourId": 2,
+      "id": 3
+    }
+  ],
+  "shows": [
+    {
+      "name": "boris",
+      "price": "2",
+      "address": "downing",
+      "id": 1
+    },
+    {
+      "name": "boris",
+      "price": "2",
+      "address": "donw",
+      "id": 2
     }
   ]
 }

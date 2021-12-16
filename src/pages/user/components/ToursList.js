@@ -1,21 +1,28 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 function ToursList() {
   const [tours, setTours] = useState([])
 
-  console.log({ tours })
+  useEffect(() => {
+    fetch("http://localhost:3030/tours").then(resp => resp.json()).then(data => {
+      setTours(data);
+    })
+  }, []);
 
   return (
     <ul>
-      {tours.map((tour, index) => {
-        const { name, price } = tour
+      <h2>Available Tours</h2>
+
+      {tours && tours.map((tour, index) => {
+
 
         return (
           <li key={index}>
-            <h3>{name}</h3>
-            <p>Price: £{price}</p>
-            <Link to={`/tours/${tour.id}/book`} state={{ tour }}>
+            <h3>{tour.name}</h3>
+            <p>Price: £{tour.price}</p>
+            <p>Address: {tour.address}</p>
+            <Link to={`/tours/${tour.id}/book`} state={tour}>
               Book Tour
             </Link>
           </li>

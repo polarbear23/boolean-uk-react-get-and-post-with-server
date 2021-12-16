@@ -12,7 +12,7 @@ function TicketsTable(props) {
         <th>Price per Ticket</th>
         <th>Total</th>
       </tr>
-      {tickets.map((ticket, index) => {
+      {tickets && tickets.map((ticket, index) => {
         return <TicketRow key={index} ticket={ticket} />
       })}
     </table>
